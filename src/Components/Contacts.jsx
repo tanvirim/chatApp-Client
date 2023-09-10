@@ -8,18 +8,28 @@ import Logo from "../assets/logo.svg";
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImage, setCurrentUserImage] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
+  
   useEffect(() => {
     const fetchData = async () => {
-      const data = await JSON.parse(
-        localStorage.getItem("chat-app-user")
-      );
-      setCurrentUserName(data.username);
-      setCurrentUserImage(data.avatarImage);
+      const userData = localStorage.getItem("chat-app-user");
+      if (userData) {
+        const user = JSON.parse(userData);
+        if (user && user.username) {
+          setCurrentUserName(user.username);
+          setCurrentUserImage(user.avatarImage);
+        } else {
+          // Handle the case where user data is incomplete
+          console.error("User data is incomplete");
+        }
+      } else {
+        // Handle the case where user data is missing
+        console.error("User data not found in localStorage");
+      }
     };
   
-    fetchData(); // Call the async function immediately
-  
+    fetchData();
   }, []);
+  
   
   const changeCurrentChat = (index, contact) => {
     setCurrentSelected(index);
