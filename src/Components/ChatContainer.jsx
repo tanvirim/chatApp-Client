@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ChatInput from "./CharInput";
 import Logout from "./Logout";
 import axios from "axios";
-import { sendMessageRoute, recieveMessageRoute } from "../utils/APIRoutes";
+import { recieveMessageRoute, sendMessageRoute } from "../Utils/APIRoutes";
 
 
 export default function ChatContainer({ currentChat, currentUser,socket }) {

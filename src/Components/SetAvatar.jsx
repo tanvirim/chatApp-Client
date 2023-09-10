@@ -6,7 +6,8 @@ import { Buffer } from "buffer";
 import {toast }from "react-toastify"
 import { ToastContainer } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { setAvatarRoute } from "../utils/APIRoutes";
+import { setAvatarRoute } from "../Utils/APIRoutes";
+
 
 
 export default function SetAvatar() {
