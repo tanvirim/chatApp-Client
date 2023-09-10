@@ -1,29 +1,30 @@
-import Header from "./component/layout/Header/Header.jsx";
-import Footer from "./component/layout/Footer/Footer.jsx"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"; // Import Routes
-import "./App.css";
-import WebFont from "webfontloader";
-import { useEffect } from "react";
-import Home from "./component/Home/Home.jsx";
+import { BrowserRouter } from 'react-router-dom'
+import { Routes } from 'react-router-dom'
+import { Route } from 'react-router-dom'
+import Register from './Pages/Register'
+import Login from './Pages/Login'
+
+import SetAvatar from './Components/SetAvatar'
+import Chat from './Pages/Chat'
+
+
+
 
 function App() {
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ["Roboto", "Droid Sans", "Chilanka"],
-      },
-    });
-  }, []);
+
 
   return (
-    <Router>
-      <Header />
-      <Routes> {/* Use Routes instead of Route */}
-        <Route path="/" element={<Home />} /> {/* Use element prop */}
-      </Routes>
-      <Footer />
-    </Router>
-  );
+   <BrowserRouter>
+   <Routes>
+       <Route path="/register" element={<Register />} />
+       <Route path="/login" element={<Login/>} />
+       <Route path="/" element={<Chat />} />
+       <Route path="/setAvatar" element={<SetAvatar />} />
+       <Route path="/chat" element={<Chat/>} />
+       </Routes>
+       </BrowserRouter>
+
+  )
 }
 
-export default App;
+export default App
