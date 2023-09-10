@@ -4,18 +4,27 @@ import Robot from "../assets/robot.gif";
 export default function Welcome() {
   const [userName, setUserName] = useState("");
   
-  useEffect(()=>{
+  useEffect(() => {
     const fetchdata = async () => {
-      setUserName(
-        await JSON.parse(
-          localStorage.getItem("chat-app-user")
-        ).username
-      );
-    }
-    fetchdata()
-  }
-   
-    , []);
+      const userData = localStorage.getItem("chat-app-user");
+      if (userData) {
+        const user = JSON.parse(userData);
+        if (user && user.username) {
+          setUserName(user.username);
+        } else {
+          // Handle the case where user data is incomplete
+          console.error("User data is incomplete");
+        }
+      } else {
+        // Handle the case where user data is missing
+        console.error("User data not found in localStorage");
+      }
+    };
+  
+    fetchdata();
+  }, []);
+  
+
   return (
     <Container>
       <img src={Robot} alt="" />
