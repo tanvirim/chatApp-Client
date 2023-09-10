@@ -11,7 +11,7 @@ import { setAvatarRoute } from "../Utils/APIRoutes";
 
 
 export default function SetAvatar() {
-  const api = "http://api.multiavatar.com/456789";
+  const api = "https://api.multiavatar.com/456789";
   const navigate = useNavigate();
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
