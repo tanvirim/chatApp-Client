@@ -86,7 +86,7 @@ export default function Register() {
         }
         navigate("/login");
       } catch (error) {
-        // Handle any API request errors here
+        
         console.error("API request error:", error);
       }
     }
