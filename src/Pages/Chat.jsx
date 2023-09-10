@@ -4,13 +4,12 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { io } from "socket.io-client";
 import styled from "styled-components";
-import { allUsersRoute } from "../utils/APIRoutes";
 
 import Contacts from "../Components//Contacts"
 
-
 import Welcome from "../Components/Welcome";
 import ChatContainer from "../Components/ChatContainer";
+import { allUsersRoute } from "../Utils/APIRoutes";
 
 export default function Chat() {
   const navigate = useNavigate();
