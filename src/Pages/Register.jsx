@@ -8,6 +8,7 @@ import { registerRoute } from "../utils/APIRoutes";
 
 
 
+
 export default function Register() {
 
   const navigate = useNavigate()
