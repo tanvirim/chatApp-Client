@@ -23,31 +23,34 @@ export default function SetAvatar() {
       draggable: true,
       theme: "dark",
     };
-  const setProfilePicture = async () => {
-    if (selectedAvatar === undefined) {
-      toast.error("Please select an avatar", toastOptions);
-    } else {
-      const user = await JSON.parse(
-        localStorage.getItem("chat-app-user")
-      );                                                                                            
-
-      const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
-        image: avatars[selectedAvatar],                                                                                                                                                                                 
-      });
-
-      if (data.isSet) {
-        user.isAvatarImageSet = true;
-        user.avatarImage = data.image;
-        localStorage.setItem(
-        "chat-app-user",
-          JSON.stringify(user)
-        );
-        navigate("/");
-      } else {
-        toast.error("Error setting avatar. Please try again.", toastOptions);
+    const setProfilePicture = async () => {
+      const user = await JSON.parse(localStorage.getItem("chat-app-user"));
+    
+      if (!user) {
+        toast.error("User data not found. Please log in.", toastOptions);
+        // Handle the case where user data is missing, e.g., redirect to the login page
+        navigate("/login");
+        return;
       }
-    }
-  };
+    
+      if (selectedAvatar === undefined) {
+        toast.error("Please select an avatar", toastOptions);
+      } else {
+        const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
+          image: avatars[selectedAvatar],
+        });
+    
+        if (data.isSet) {
+          user.isAvatarImageSet = true;
+          user.avatarImage = data.image;
+          localStorage.setItem("chat-app-user", JSON.stringify(user));
+          navigate("/");
+        } else {
+          toast.error("Error setting avatar. Please try again.", toastOptions);
+        }
+      }
+    };
+    
 
   useEffect(() => {
     async function fetchData() {
