@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {  Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.svg"
 import axios from "axios"
-import { registerRoute } from "../utils/APIRoutes";
+import { registerRoute } from "../Utils/APIRoutes";
 
 
 
@@ -79,10 +79,10 @@ export default function Register() {
         if (data.status === false) {
           toast.error(data.msg, toastOptions);
         }
-        // if (data.status === true) {
-        //   // localStorage.setItem("chat-app-user", JSON.stringify(data.user))
+        if (data.status === true) {
+          // localStorage.setItem("chat-app-user", JSON.stringify(data.user))
           
-        // }
+        }
         navigate("/login");
       } catch (error) {
         // Handle any API request errors here
