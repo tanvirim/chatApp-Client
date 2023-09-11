@@ -31,7 +31,7 @@ import Logo from "../assets/logo.svg";
         <Container>
           <div className="brand">
             <img src={Logo} alt="logo" />
-            <h3>snappy</h3>
+            <h3>Chat App</h3>
           </div>
           <div className="contacts">
         
@@ -94,7 +94,7 @@ const Container = styled.div`
     }
     h3 {
       color: white;
-      text-transform: uppercase;
+      
     }
   }
   .contacts {
