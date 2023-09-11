@@ -126,7 +126,7 @@ export default function Register() {
           />
           <button type="submit">Create User</button>
           <span>
-            Already have an account? <Link to="/login">Login.</Link>
+            Already have an account? <Link to="/login">  Login here</Link>
           </span>
         </form>
       </FormContainer>
@@ -196,4 +196,13 @@ const FormContainer = styled.div`
     background-color: #3a00b3; /* Change the background color on hover */
   }
 }
+span {
+    color: white;
+    text-transform: uppercase;
+    a {
+      color: #4e0eff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
 `
